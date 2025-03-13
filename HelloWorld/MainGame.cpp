@@ -111,7 +111,7 @@ void HandlePlayerControls()
 		Vector2D firePos = obj_agent8.pos + Vector2D(155, 75);
 		int id = Play::CreateGameObject(TYPE_LASER, firePos, 30, "laser");
 		Play::GetGameObject(id).velocity = { 32, 0 };
-		Play::PlayAudio("shoot");
+		//Play::PlayAudio("shoot");
 	}
 	Play::UpdateGameObject(obj_agent8);
 
@@ -140,7 +140,7 @@ void UpdateFan()
 			obj_tool.velocity.x = -4;
 			obj_tool.rotSpeed = 0.1f;
 		}
-		Play::PlayAudio("tool");
+		//Play::PlayAudio("tool");
 	}
 	if (Play::RandomRoll(150) == 1)
 	{
@@ -172,8 +172,8 @@ void UpdateTools()
 
 		if (gameState.agentState != STATE_DEAD && Play::IsColliding(obj_tool, obj_agent8))
 		{
-			Play::StopAudio("music");
-			Play::PlayAudio("die");
+			//Play::StopAudio("music");
+			//Play::PlayAudio("die");
 			obj_agent8.pos = { -100, -100 };
 			gameState.agentState = STATE_DEAD;
 		}
@@ -217,7 +217,7 @@ void UpdateCoinsAndStars()
 			}
 			hasCollided = true;
 			gameState.score += 500;
-			Play::PlayAudio("collect");
+			//Play::PlayAudio("collect");
 		}
 
 		Play::UpdateGameObject(obj_coin);
@@ -273,7 +273,7 @@ void UpdateLasers()
 			{
 				hasCollided = true;
 				obj_coin.type = TYPE_DESTROYED;
-				Play::PlayAudio("error");
+				//Play::PlayAudio("error");
 				gameState.score -= 300;
 			}
 		}
@@ -364,7 +364,7 @@ void UpdateAgent8()
 				obj_agent8.pos = { 115, 600 };
 				obj_agent8.velocity = { 0, 0 };
 				obj_agent8.frame = 0;
-				Play::StartAudioLoop("music");
+				//Play::StartAudioLoop("music");
 				gameState.score = 0;
 
 				for (int id_obj : Play::CollectGameObjectIDsByType(TYPE_TOOL))
